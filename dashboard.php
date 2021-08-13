@@ -1,0 +1,1 @@
+<a href="sign-out.php">تسجيل الخروج</a>

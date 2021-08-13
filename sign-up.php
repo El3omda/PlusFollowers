@@ -85,19 +85,19 @@ if (isset($ref)) {
 
         <div class="input-field">
           <label for="UserName">اسم المستخدم</label>
-          <input type="text" name="UserName" value="<?php echo $UserName; ?>" id="UserName" required autocomplete="off">
+          <input type="text" name="UserName" value="<?php echo $UserName; ?>" id="UserName" placeholder="اكتب اسمك . . . " required autocomplete="off">
         </div>
         <div class="input-field">
           <label for="UserEmail">الايمال</label>
-          <input type="email" name="UserEmail" value="<?php echo $UserEmail; ?>" id="UserEmail" required autocomplete="off">
+          <input type="email" name="UserEmail" value="<?php echo $UserEmail; ?>" id="UserEmail" placeholder="اكتب ايمالك . . . " required autocomplete="off">
         </div>
         <div class="input-field">
           <label for="UserPass">كلمة المرور</label>
-          <input type="password" name="UserPass" value="<?php echo $UserPass; ?>" id="UserPass" required autocomplete="off">
+          <input type="password" name="UserPass" value="<?php echo $UserPass; ?>" id="UserPass" placeholder="اكتب كلمة المرور . . ." required autocomplete="off">
         </div>
         <div class="input-field">
           <label for="InstaUser">اسم مستخدم الانستا</label>
-          <input type="text" name="InstaUser" value="<?php echo $InstaUser; ?>" id="InstaUser" required autocomplete="off">
+          <input type="text" name="InstaUser" value="<?php echo $InstaUser; ?>" id="InstaUser" placeholder="اكتب اليوزر بتاع انستا . . . " required autocomplete="off">
         </div>
         <input type="submit" name="submit" value="تسجيل حساب">
       </form>

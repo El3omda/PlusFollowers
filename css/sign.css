@@ -19,7 +19,7 @@
   color: #fff;
   font-size: 18px;
   font-family: cairo,Arial;
-  display: none;
+  /* display: none; */
 }
 .screen a {
   color: #fff;
@@ -40,6 +40,15 @@
   margin-right: 5px;
   margin-top: 5px;
   color: #fff;
+}
+
+input::placeholder {
+  font-family: cairo,arial;
+  transition: .4s;
+}
+
+input:focus::placeholder {
+  opacity: 0;
 }
 
 /* End Main */
@@ -106,7 +115,31 @@
 .form-box input[type="submit"]:hover {
   border: 1px solid #e1306c;
   background: transparent;
-  color: #e1306c;
+  color: #0c0b0b;
 }
 
 /* End Sign Up */
+
+/* Start Sign Out */
+
+.sign-out {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  font-family: cairo,Arial;
+  font-size: 20px;
+}
+
+.logo {
+  color: #c13584;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo .letter {
+  color: #405de6;
+}
+
+/* End Sign Out */
