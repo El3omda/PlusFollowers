@@ -16,5 +16,3 @@ $dbname = 'instafollowers';
 if (!$conn) {
   echo 'Connection Faild Cause -> ' . mysqli_connect_error();
 }
-
-header("Location:index.php");

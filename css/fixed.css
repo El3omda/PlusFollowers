@@ -1,0 +1,81 @@
+/* Link Cairo Font */
+
+@font-face {
+  font-family: cairo;
+  src: url(../fonts/Cairo-Regular.ttf);
+}
+
+/* Start Nav */
+
+* {
+  padding: 0;
+  margin: 0;
+}  
+
+nav {
+  padding: 20px 0;
+  background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.container {
+  padding: 0 20px;
+}
+
+.logo {
+  float: right;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  color: #fff;
+}
+
+.logo .letter {
+  color: #405de6;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+nav ul li:first-of-type {
+  margin: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 16px;
+  font-family: cairo,Arial;
+  padding: 5px 10px;
+  background-color: #fd1d1d;
+  color: #fff;
+  border: 1px solid #fd1d1d;
+  border-radius: 5px;
+  transition: all .3s;
+}
+
+nav ul li a:hover {
+  background-color: transparent;
+}
+
+/* End Nav */
+
+/* Start Footer */
+
+footer {
+  padding: 20px 0;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+/* End Footer */

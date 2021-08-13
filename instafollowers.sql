@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2021 at 01:01 PM
+-- Generation Time: Aug 13, 2021 at 03:08 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -51,10 +51,17 @@ CREATE TABLE `users` (
   `Followers` int(11) NOT NULL,
   `Following` int(11) NOT NULL,
   `UserBio` varchar(300) NOT NULL,
-  `UserRef` varchar(50) NOT NULL,
   `Coins` int(11) NOT NULL DEFAULT 0,
   `Online` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserID`, `UserName`, `UserEmail`, `UserPass`, `InstaUser`, `Followers`, `Following`, `UserBio`, `Coins`, `Online`) VALUES
+(3, 'emad othman', 'el3om0a@gmail.com', '123456', 'E.A.A.A.O', 0, 0, '', 50, ''),
+(13, 'fgjhklhjkh', 'hghghgh@yfhf.fdgd', '123456789', 'ffhgjhkjllhj', 0, 0, '', 0, '');
 
 --
 -- Indexes for dumped tables
@@ -72,8 +79,7 @@ ALTER TABLE `orders`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`UserID`),
   ADD UNIQUE KEY `UserEmail` (`UserEmail`),
-  ADD UNIQUE KEY `InstaUser` (`InstaUser`),
-  ADD UNIQUE KEY `UserRef` (`UserRef`);
+  ADD UNIQUE KEY `InstaUser` (`InstaUser`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -89,7 +95,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

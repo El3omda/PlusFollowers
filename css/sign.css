@@ -1,0 +1,112 @@
+/* Link Cairo Font */
+
+@font-face {
+  font-family: cairo;
+  src: url(../fonts/Cairo-Regular.ttf);
+}
+
+/* Start Main */
+
+.screen {
+  position: absolute;
+  right: 50px;
+  width: 90%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #4867ff;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-family: cairo,Arial;
+  display: none;
+}
+.screen a {
+  color: #fff;
+}
+
+.faild {
+  background-color: #fd1d1d;
+}
+.success {
+  background-color: rgb(98, 192, 98);
+}
+
+.screen i {
+  float: right;
+  font-size: 22px;
+  text-align: center;
+  cursor:pointer;
+  margin-right: 5px;
+  margin-top: 5px;
+  color: #fff;
+}
+
+/* End Main */
+
+/* Start Sign Up */
+
+.form-box {
+  direction: rtl;
+  text-align: center;
+  font-family: cairo,Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+}
+
+.form-box .input-field {
+  border: 1px solid #fd1d1d;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  width: 50%;
+  margin: 20px auto 0;
+}
+
+.form-box .input-field input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  text-align: center;
+  font-size: 18px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border: none;
+}
+
+.form-box label {
+  display: block;
+  font-size: 18px;
+  margin: auto;
+  padding: 6px 0;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  width: 100%;
+  border: none;
+  background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  color: #fff;
+
+}
+
+.form-box input[type="submit"] {
+  width: 50%;
+  font-size: 18px;
+  font-family: cairo;
+  margin-top: 20px;
+  cursor: pointer;
+  background:linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  color: #fff;
+  border: none;
+  padding: 10px 0;
+  border-radius: 15px;
+  transition: border .3s;
+  transition: color .3s;
+}
+
+.form-box input[type="submit"]:hover {
+  border: 1px solid #e1306c;
+  background: transparent;
+  color: #e1306c;
+}
+
+/* End Sign Up */
