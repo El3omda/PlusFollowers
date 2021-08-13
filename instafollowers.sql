@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2021 at 10:13 AM
+-- Generation Time: Aug 13, 2021 at 01:01 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -52,6 +52,7 @@ CREATE TABLE `users` (
   `Following` int(11) NOT NULL,
   `UserBio` varchar(300) NOT NULL,
   `UserRef` varchar(50) NOT NULL,
+  `Coins` int(11) NOT NULL DEFAULT 0,
   `Online` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
