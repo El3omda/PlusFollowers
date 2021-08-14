@@ -45,6 +45,15 @@ nav ul li:first-of-type {
   margin: 0;
 }
 
+nav ul li.coin {
+  background-color: #405de6;
+  color: #fff;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 5px;
+  font-family: cairo,arial;
+} 
+
 nav ul li a {
   text-decoration: none;
   color: #000;

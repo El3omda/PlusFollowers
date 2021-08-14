@@ -23,10 +23,11 @@ if (isset($_POST['submit'])) {
     session_start();
     $_SESSION['UserName'] = $row['UserName'];
     $_SESSION['UserEmail'] = $row['UserEmail'];
+    $_SESSION['InstaUser'] = $row['InstaUser'];
     setcookie('UserEmail', $row['UserEmail'], time() + 3600 * 24 * 10);
     setcookie('UserPass', $row['UserPass'], time() + 3600 * 24 * 10);
     $msg = "مرحبا بعودتك من جديد سيتم تحويلك لصفحة الرئيسية بعد 3 ثواني";
-    header("Refresh:3;url=dashboard.php");
+    header("Refresh:3;url=dashboard.php?success");
   } else {
     $msg = 'خطاء في الايمال او الباسورد حاول مجددا او سجل <a href="sign-up.php">حساب جديد</a>';
   }

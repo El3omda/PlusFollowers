@@ -24,31 +24,29 @@ if (isset($_POST['submit'])) {
     if (mysqli_query($conn, $sqlInsert)) {
       $msg = 'تم تسجيل الحساب بنجاح <a href="sign-in.php">تسجيل الدخول</a>';
     }
-    $_POST = [];
+    // Add Coins For User Invite Refferal
+    if (isset($ref)) {
+      $sqlCheckRef = "SELECT InstaUser FROM users WHERE InstaUser = '$ref'";
+      $resultCheckRef = mysqli_query($conn, $sqlCheckRef);
+      if ($resultCheckRef->num_rows > 0) {
+        // Get User Old Coins
+        $sqlOLdCoin = "SELECT Coins FROM users WHERE InstaUser = '$ref'";
+        $resultOC = mysqli_query($conn, $sqlOLdCoin);
+        $rowOC = $resultOC->fetch_assoc();
+        $oldCoin = $rowOC['Coins'];
+        $newCoins = (int)$oldCoin + 50;
+
+        // Update New Coin
+
+        $sqlUUC = "UPDATE users SET Coins = '$newCoins' WHERE InstaUser = '$ref'";
+        mysqli_query($conn, $sqlUUC);
+      }
+    }
   } else {
     $msg = 'بيانات الحساب مسجلة بالفعل <a href="sign-in.php">تسجيل الدخول</a>';
   }
 }
 
-// Add Coins For User Invite Refferal
-
-if (isset($ref)) {
-  $sqlCheckRef = "SELECT InstaUser FROM users WHERE InstaUser = '$ref'";
-  $resultCheckRef = mysqli_query($conn, $sqlCheckRef);
-  if ($resultCheckRef->num_rows > 0) {
-    // Get User Old Coins
-    $sqlOLdCoin = "SELECT Coins FROM users WHERE InstaUser = '$ref'";
-    $resultOC = mysqli_query($conn, $sqlOLdCoin);
-    $rowOC = $resultOC->fetch_assoc();
-    $oldCoin = $rowOC['Coins'];
-    $newCoins = (int)$oldCoin + 50;
-
-    // Update New Coin
-
-    $sqlUUC = "UPDATE users SET Coins = '$newCoins' WHERE InstaUser = '$ref'";
-    mysqli_query($conn, $sqlUUC);
-  }
-}
 
 
 ?>
@@ -65,7 +63,7 @@ if (isset($ref)) {
   <link rel="stylesheet" href="css/sign.css">
 </head>
 
-<body>
+<body style="padding-bottom: 100px;">
 
   <!-- Include Nav -->
 
@@ -81,7 +79,7 @@ if (isset($ref)) {
     </div>
     <div class="form-box">
 
-      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+      <form action="<?php echo $_SERVER['PHP_SELF'] . "?Ref=" . $ref; ?>" method="POST">
 
         <div class="input-field">
           <label for="UserName">اسم المستخدم</label>
