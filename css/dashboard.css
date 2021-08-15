@@ -4,9 +4,19 @@
   src: url(../fonts/Cairo-Regular.ttf);
 }
 
-body {
-  padding-bottom: 100px;
+/* body {
+  margin-bottom: 200px;
+  overflow: hidden;
+} */
+
+.seperator {
+  width: 95%;
+  height: 4px;
+  margin: 50px auto;
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  border-radius: 5px;
 }
+
 /* Start Login To Insta */
 
 .login-to-insta {
@@ -98,5 +108,78 @@ body {
   border: 1px solid #e1306c;
 }
 /* End Insta Data */
+
+/* Start Gain Coins */
+
+.gain-coins {
+  width: 95%;
+  text-align: center;
+  font-family: cairo,arial;
+  margin: auto;
+}
+
+.gain-coins .head {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.gain-coins .u-datails .image {
+  width: 45%;
+  margin: 20px auto;
+}
+
+.gain-coins .u-datails .image img {
+  width: 60%;
+  border-radius: 50%;
+}
+
+.u-datails .name {
+  font-weight: bold;
+  font-family: cairo,arial;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.gain-coins .action button {
+  display: block;
+  margin: 10px auto;
+  padding: 5px 80px;
+  font-size: 18px;
+  font-family: cairo,arial;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  border: 1px solid #e1306c;
+  transition: all .3s;
+}
+
+.gain-coins .action button:hover {
+  background: transparent;
+  color: #e1306c;
+  border: 1px solid #e1306c;
+}
+
+.gain-coins {
+  position: relative;
+  height: 600px;
+}
+
+.follow-box {
+  background-color: #fff;
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid #e1306c;
+  border-radius: 20px;
+  padding: 30px 20px;
+}
+
+/* End Gain Coins */
 
 /* End Dashboard */

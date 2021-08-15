@@ -1,15 +1,12 @@
 <?php
 
+require_once 'config.php';
+
 // Start Grabing Instegram By Insta User
 
 session_start();
 
 $InstaUser = $_SESSION['InstaUser'];
-
-
-// You Can USe https://www.instagram.com/E.A.A.A.O/?__a=1
-
-
 
 // To Get Proile Image
 
@@ -41,11 +38,27 @@ $endscrapePoBio = explode('</p>', $StartscrapeBio[1]);
 
 $StartscrapeFollowers = explode('<span class="followerCount">', $scrape);
 $endscrapePoFollowers = explode('</span><span>Followers</span>', $StartscrapeFollowers[1]);
-
+$followers = $endscrapePoFollowers[0];
 // To Get User Follows
 
 $StartscrapeFollows = explode('<span id="following">', $scrape);
 $endscrapePoFollows = explode('</span><span>Following</span>', $StartscrapeFollows[1]);
+$follows = $endscrapePoFollows[0];
+
+// Update User Followers And Follows
+
+$sqlUpdateFoll = "UPDATE users SET Followers = '$followers', Follows = '$follows' WHERE InstaUser = '$InstaUser'";
+mysqli_query($conn, $sqlUpdateFoll);
+
+
+// Gain Coins 
+
+// Get User To Follow Account Details
+
+# Get Data From Database
+
+$sqlGetUserOrders = "SELECT * FROM orders WHERE OrderOwner != '$InstaUser'";
+$resultGet = mysqli_query($conn, $sqlGetUserOrders);
 
 
 ?>
@@ -98,12 +111,87 @@ $endscrapePoFollows = explode('</span><span>Following</span>', $StartscrapeFollo
 
   <!-- End Main Content -->
 
+  <div class="seperator">
+
+  </div>
+
+  <!-- Start Gain Coins -->
+
+  <div class="gain-coins">
+    <p class="head">تابع الاخرون لتحصل علي النقاط</p>
+
+    <?php
+
+
+    if ($resultGet->num_rows > 0) {
+
+      while ($rowGetCoin = $resultGet->fetch_assoc()) {
+
+
+        // To Get Proile Image
+
+        $scrape1 = file_get_contents("https://privatephotoviewer.com/usr/" . $rowGetCoin['OrderOwner']);
+        $startscrap1 = explode('<img src=', $scrape1);
+        $endscrapPhoto1 = explode(' style=>', $startscrap1[1]);
+
+        // To Get Profile Name
+
+        $StartscrapeName1 = explode('<h1 id="userfullname" style="margin-bottom: 0; font-size: 22px; font-weight: 600;">', $scrape1);
+        $endscrapeName1 = explode('</h1>', $StartscrapeName1[1]);
+
+
+        echo '
+        <div class="follow-box">
+        <div class="u-datails">
+        <div class="image">
+         
+        </div>
+        <div class="name">' . $endscrapeName1[0] . '</div>
+      </div>
+      <div class="action">
+        <button class="follow" data-url="' . 'https://www.instagram.com/' . $rowGetCoin['OrderOwner'] . '">متابعة</button>
+        <button class="skip">تخطي</button>
+      </div>
+        </div>
+        ';
+      }
+    }
+
+
+    ?>
+  </div>
+
+  <!-- End Gain Coins -->
 
   <!-- Include Footer -->
 
   <?php include 'footer.php'; ?>
 
-  <script src="js/dashboard-main.js"></script>
+  <script>
+    var skip = document.querySelectorAll(".follow-box .skip");
+    var follow = document.querySelectorAll(".follow-box .follow");
+
+    skip.forEach(function(el) {
+      el.addEventListener("click", function() {
+        el.parentElement.parentElement.style.display = "none"
+      })
+    })
+
+    follow.forEach(function(el1) {
+      el1.addEventListener("click", function() {
+        var userlink = el1.dataset.url;
+        var win = window.open(
+          userlink,
+          '_blank',
+          'toolbar=0,scrollbars=0,resizable=0,top=100,left=300,width=400,height=400',
+        )
+        setTimeout(function() {
+          window.location.reload()
+          win.close();
+        }, 5000);
+      })
+    })
+  </script>
 </body>
 
 </html>

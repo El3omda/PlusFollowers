@@ -9,7 +9,6 @@
 
       <?php
 
-
       @session_start();
 
       if (isset($_SESSION['UserEmail'])) {
@@ -20,7 +19,18 @@
         $row = $resultCoin->fetch_assoc();
         echo '
       <li><a href="sign-out.php">تسجيل الخروج</a></li>
+      ';
+        if ($_SERVER['PHP_SELF'] != "/GitHub/PlusFollowers/dashboard.php") {
+          echo '
         <li><a href="dashboard.php">الصفحة الرئيسية</a></li>
+          ';
+        }
+        if ($_SERVER['PHP_SELF'] != "/GitHub/PlusFollowers/Shop.php") {
+          echo '
+          <li><a href="Shop.php">زيادة المتابعين</a></li>
+          ';
+        }
+        echo '
         <li class="coin"><i class="fa fa-money"></i> ' . $row['Coins'] . ' </li>
         ';
       } else {

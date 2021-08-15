@@ -1,0 +1,165 @@
+/* Start Main Option */
+
+body {
+  margin-bottom: 100px;
+}
+
+@font-face {
+  font-family: cairo;
+  src: url(../fonts/Cairo-Regular.ttf);
+}
+
+.seperator {
+  width: 95%;
+  height: 4px;
+  margin: 50px auto;
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  border-radius: 5px;
+}
+
+.screen {
+  position: absolute;
+  right: 50px;
+  width: 90%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #4867ff;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-family: cairo,Arial;
+  /* display: none; */
+}
+.screen a {
+  color: #fff;
+}
+
+.faild {
+  background-color: #fd1d1d;
+}
+.success {
+  background-color: rgb(98, 192, 98);
+}
+
+.screen i {
+  float: right;
+  font-size: 22px;
+  text-align: center;
+  cursor:pointer;
+  margin-right: 5px;
+  margin-top: 5px;
+  color: #fff;
+}
+
+/* End Main Option */
+
+/* Start Last Order */
+
+.last-order {
+  margin: 20px 0;
+  direction: rtl;
+}
+
+.head {
+  text-align: center;
+  font-family: cairo, arial;
+  font-size: 19px;
+  margin-bottom: 20px;
+}
+
+.last-order table {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+  font-family: cairo, arial;
+  user-select: none;
+}
+
+.last-order table td,
+.last-order table th {
+  padding: 5px 0;
+}
+
+.last-order table td,
+.last-order table th {
+  border: 1px solid #000;
+}
+
+.last-order table th:first-of-type {
+  border-top-right-radius: 10px;
+}
+
+.last-order table th:last-of-type {
+  border-top-left-radius: 10px;
+}
+
+.last-order table tr td:first-of-type {
+  border-bottom-right-radius: 10px;
+}
+
+.last-order table tr td:last-of-type {
+  border-bottom-left-radius: 10px;
+}
+
+/* End Last Order */
+
+/* Start New Order */
+
+.new-order {
+  width: 90%;
+  margin: auto;
+}
+
+.new-order form {
+  width: 50%;
+  height: 40px;
+  line-height: 40px;
+  direction: rtl;
+  margin: 20px auto;
+  text-align: center;
+  user-select: none;
+  font-family: cairo, arial;
+  font-size: 20px;
+  border: 1px solid #e1306c;
+  border-radius: 10px;
+  padding-right: 10px;
+}
+
+.new-order form input[type="text"] {
+  width: 35px;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-family: cairo, arial;
+  font-size: 20px;
+  color: #e1306c;
+}
+
+.coast {
+  display: inline-block;
+  color: #e1306c;
+  width: 50px;
+}
+
+.new-order form input[type="submit"] {
+  font-family: cairo, arial;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #e1306c;
+  color: #fff;
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  transition: all .3s;
+  box-sizing: border-box;
+  padding: 3px 0;
+  padding-right: 25px;
+  padding-left: 31px;
+}
+
+.new-order form input[type="submit"]:hover {
+  background: transparent;
+  color: #e1306c;
+}
+
+/* End New Order */
