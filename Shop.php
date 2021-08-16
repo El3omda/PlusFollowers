@@ -5,6 +5,7 @@
 session_start();
 
 $InstaUser = $_SESSION['InstaUser'];
+$oldFolowers = $_SESSION['followers'];
 
 // Include Config File 
 
@@ -16,7 +17,11 @@ $sqlLO = "SELECT * FROM orders WHERE OrderOwner = '$InstaUser'";
 $resultLO = mysqli_query($conn, $sqlLO);
 
 // Create New Order
-
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+  if ($_SERVER["QUERY_STRING"] != "su") {
+    header("Location:refresh.php");
+  }
+}
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   # Get User Current Coins
@@ -58,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($resultCPO->num_rows > 0) {
       $msg = "لا يمكنك انشاء طلب يلزم اكمال الطلب السابق";
     } else {
-      $sqlInsertOrder = "INSERT INTO orders (OrderOwner,RFollowers,CFollowers,OrderStatus,CoinSpend) VALUES ('$InstaUser','$order','0','Pending','$mustHave')";
+      $sqlInsertOrder = "INSERT INTO orders (OrderOwner,RFollowers,OldFollowers,CFollowers,OrderStatus,CoinSpend) VALUES ('$InstaUser','$order','$oldFolowers','0','Pending','$mustHave')";
       if (mysqli_query($conn, $sqlInsertOrder)) {
         $msg = "تم حفظ الطلب بنجاح";
 

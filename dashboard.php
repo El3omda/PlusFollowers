@@ -38,17 +38,12 @@ $endscrapePoBio = explode('</p>', $StartscrapeBio[1]);
 
 $StartscrapeFollowers = explode('<span class="followerCount">', $scrape);
 $endscrapePoFollowers = explode('</span><span>Followers</span>', $StartscrapeFollowers[1]);
-$followers = $endscrapePoFollowers[0];
+$_SESSION['followers'] = $followers = $endscrapePoFollowers[0];
 // To Get User Follows
 
 $StartscrapeFollows = explode('<span id="following">', $scrape);
 $endscrapePoFollows = explode('</span><span>Following</span>', $StartscrapeFollows[1]);
-$follows = $endscrapePoFollows[0];
-
-// Update User Followers And Follows
-
-$sqlUpdateFoll = "UPDATE users SET Followers = '$followers', Follows = '$follows' WHERE InstaUser = '$InstaUser'";
-mysqli_query($conn, $sqlUpdateFoll);
+$_SESSION['follows'] = $follows = $endscrapePoFollows[0];
 
 
 // Gain Coins 
@@ -80,12 +75,11 @@ $resultGet = mysqli_query($conn, $sqlGetUserOrders);
 
   <?php include 'nav.php'; ?>
 
-
+  <div style="top: 14%;" class="screen">
+    <i class="fa fa-times"></i>
+    <span><?php echo @$_SESSION['msg'] ?></span>
+  </div>
   <!-- Start Main Content -->
-
-  <!-- <div class="login-to-insta">
-    <button onclick="login();">تسجيل الدخول لحساب الانستا</button>
-  </div> -->
 
   <div class="insta-details">
     <div class="profile-image">
@@ -149,16 +143,23 @@ $resultGet = mysqli_query($conn, $sqlGetUserOrders);
         <div class="name">' . $endscrapeName1[0] . '</div>
       </div>
       <div class="action">
-        <button class="follow" data-url="' . 'https://www.instagram.com/' . $rowGetCoin['OrderOwner'] . '">متابعة</button>
-        <button class="skip">تخطي</button>
+        <button class="follow" data-url="https://www.instagram.com/' . $rowGetCoin['OrderOwner'] . '">متابعة</button>
+        <button class="skip" data-id="' . $rowGetCoin['ID'] . '">تخطي</button>
       </div>
         </div>
         ';
       }
+    } else {
+      echo '<p class="head">لا يوجد حسابات في الوقت الحالي</p>';
     }
 
 
     ?>
+    <p style="margin-top: 300px;display:none;" class="head" id="show">
+      عرض الحسابات المتخطاة
+      <br>
+      <button class="clear">اضغط هنا</button>
+    </p>
   </div>
 
   <!-- End Gain Coins -->
@@ -170,12 +171,41 @@ $resultGet = mysqli_query($conn, $sqlGetUserOrders);
   <script>
     var skip = document.querySelectorAll(".follow-box .skip");
     var follow = document.querySelectorAll(".follow-box .follow");
+    var skiped = [];
+    var followed = [];
+    localStorage.setItem('test', '0');
 
     skip.forEach(function(el) {
       el.addEventListener("click", function() {
-        el.parentElement.parentElement.style.display = "none"
+        el.parentElement.parentElement.style.display = "none";
+        var id = el.dataset.id;
+        skiped.push(id);
+        localStorage.setItem("skiped", JSON.stringify(skiped));
       })
     })
+    var skipedids = JSON.parse(localStorage.skiped);
+    var clearLocal = document.querySelector("#show button");
+
+    if (skipedids.length != 0) {
+      var butnClear = document.querySelector("#show");
+      butnClear.style.display = "block";
+
+      for (var i = 0; i < skipedids.length; i++) {
+        // console.log(skipedids[i])
+        skip.forEach(function(skipel) {
+          var idNum = skipel.dataset.id;
+          if (idNum == skipedids[i]) {
+            skipel.parentElement.parentElement.style.display = "none"
+          }
+        })
+      }
+
+      clearLocal.onclick = function() {
+        localStorage.clear();
+        localStorage.setItem('test', '0');
+        window.location.reload();
+      }
+    }
 
     follow.forEach(function(el1) {
       el1.addEventListener("click", function() {
@@ -186,11 +216,28 @@ $resultGet = mysqli_query($conn, $sqlGetUserOrders);
           'toolbar=0,scrollbars=0,resizable=0,top=100,left=300,width=400,height=400',
         )
         setTimeout(function() {
-          window.location.reload()
-          win.close();
+          window.location.replace("http://localhost/GitHub/PlusFollowers/procc.php")
         }, 5000);
       })
     })
+    var screen = document.querySelector('.screen');
+    var screenSpan = document.querySelector('.screen span');
+    var screenClose = document.querySelector('.screen i');
+
+    if (screenSpan.innerHTML == "لم تقم بالمطلوب") {
+      screen.classList.add('faild');
+      screen.style.display = 'block';
+    } else if (screenSpan.innerHTML == "تم اضافة 5 نقاط") {
+      screen.classList.add('success');
+      screen.style.display = 'block';
+    } else {
+      screen.style.display = 'none';
+    }
+
+    screenClose.onclick = function() {
+      screen.style.display = 'none';
+    }
+    // Start Skiped Control
   </script>
 </body>
 

@@ -17,6 +17,42 @@
   border-radius: 5px;
 }
 
+.screen {
+  position: absolute;
+  right: 50px;
+  width: 90%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #4867ff;
+  border-radius: 10px;
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  font-family: cairo,Arial;
+  /* display: none; */
+}
+.screen a {
+  color: #fff;
+}
+
+.faild {
+  background-color: #fd1d1d;
+}
+.success {
+  background-color: rgb(98, 192, 98);
+}
+
+.screen i {
+  float: right;
+  font-size: 22px;
+  text-align: center;
+  cursor:pointer;
+  margin-right: 5px;
+  margin-top: 5px;
+  color: #fff;
+}
+
+
 /* Start Login To Insta */
 
 .login-to-insta {
